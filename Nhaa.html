@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Love Question</title>
+    <body>
+        <marquee>
+            <img
+            src="https://m.media-amazon.com/images/I/517i1zjTFNL._AC_UF1000,1000_QL80_.jpg"width="250"
+            height="250"
+            vspace="10"
+            hspace="10"
+            tilte="The Milky Way Galaxy"
+            />
+    </body>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #loveText {
+            color: pink;
+            font-size: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="question">Do you love me? ❤️</h1>
+
+    <button id="yesBtn" onclick="yesAnswer()">Yes</button>
+    <button id="noBtn" onclick="noAnswer()">No</button>
+
+    <h2 id="result"></h2>
+    <h2 id="loveText"></h2>
+
+    <script>
+        let count = 0;
+        let yesSize = 18;
+        let noSize = 18;
+
+        function yesAnswer() {
+            document.getElementById("result").innerHTML = "❤️ True! I love you too!";
+            
+            // Show pink "I love you"
+            document.getElementById("loveText").innerHTML = "💗 I love you 💗";
+
+            repeatQuestion();
+        }
+
+        function noAnswer() {
+            document.getElementById("result").innerHTML = "❌ Fail! Try again!";
+
+            // Make YES bigger and NO smaller
+            yesSize += 10;
+            noSize -= 2;
+
+            document.getElementById("yesBtn").style.fontSize = yesSize + "px";
+            document.getElementById("noBtn").style.fontSize = noSize + "px";
+
+            // Clear love text if NO is pressed
+            document.getElementById("loveText").innerHTML = "";
+
+            repeatQuestion();
+        }
+
+        function repeatQuestion() {
+            count++;
+
+            if (count < 10) {
+                setTimeout(() => {
+                    document.getElementById("question").innerHTML = "Do you love me again? ❤️ (" + count + "/10)";
+                    document.getElementById("result").innerHTML = "";
+                }, 1000);
+            } else {
+                document.getElementById("question").innerHTML = "Final answer 😏❤️";
+            }
+        }
+    </script>
+
+</body>
+</html>
